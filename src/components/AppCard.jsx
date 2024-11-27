@@ -16,8 +16,8 @@ export default function AppCard({ ricetta, server, handleDeleteClick }) {
 
                 {ricetta.tags.map((tag, index) => <div key={index} className='tag' >{tag}</div>)}
             </div>
-            <div className="bottoncontain">
-                <button slug={ricetta.slug} onClick={handleDeleteClick}><i className="bi bi-trash-fill"></i></button>
+            <div className="bottoncontain" onClick={handleDeleteClick} >
+                <button slug={ricetta.slug} ><i slug={ricetta.slug} className="bi bi-trash-fill"></i></button>
 
             </div>
         </div>
