@@ -13,22 +13,23 @@ import DefaultLayout from './components/DefaultLayout'
 
 const api_server = 'http://localhost:3000'
 function App() {
-  const api_endpoint = '/ricette/'
-  const urlRicette = api_server + api_endpoint
-  const [allRicette, setAllRicette] = useState([])
+  const il_server = 'http://localhost:3000'
+  const il_endpoint = '/ricette/'
+
+  const urlRicette = il_server + il_endpoint
+  const [allRecipes, setAllRecipes] = useState([])
   useEffect(() => {
 
     fetch(urlRicette)
       .then(resp => resp.json())
       .then(data => {
-        // console.log(data);
-        // console.log(data.data);
-        setAllRicette(data.data)
+
+        setAllRecipes(data.data)
       })
   }, [])
 
+  console.log(il_server);
 
-  console.log(allRicette)
   // allRicette.forEach((r) => {
   //   console.log(r);
   // })
@@ -37,8 +38,7 @@ function App() {
   return (
     <>
 
-
-      <GlobalContexts.Provider value={{ api_server }} >
+      <GlobalContexts.Provider value={{ il_server, il_endpoint, allRecipes }} >
 
         <BrowserRouter>
           <Routes>

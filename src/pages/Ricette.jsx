@@ -1,20 +1,16 @@
 import { Link } from 'react-router'
-import AppCard from '../components/AppCard'
+import AppCard from '../Components/AppCard'
 // import AppForm from '../Components/AppForm'
 import { useState, useEffect, useContext } from 'react'
 import GlobalContexts from '../contexts/GlobalContexts';
-// const api_server = 'http://localhost:3000'
-const api_endpoint = '/ricette/'
-const url = api_server + api_endpoint
 
 
 export default function Ricette() {
-    const { api_server } = useContext(GlobalContexts)
-    console.log();
-
-    const [ricette, setRicette] = useState([])
-
-    function fetchData(url = `${api_server}${api_endpoint}`) {
+    const { il_server, il_endpoint, allRecipes } = useContext(GlobalContexts)
+    console.log(il_server, il_endpoint, allRecipes);
+    const [ricette, setRicette] = useState(allRecipes)
+    const [allTags, setAllTags] = useState([])
+    function fetchData(url = `${il_server}${il_endpoint}`) {
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
@@ -22,6 +18,7 @@ export default function Ricette() {
                 setRicette(data.data)
             })
     }
+    const url = il_server + il_endpoint
 
 
 
@@ -54,7 +51,7 @@ export default function Ricette() {
             </section> */}
             <section>
                 {ricette ? ricette.map(ricetta => (
-                    <AppCard url={url} key={ricetta.title} ricetta={ricetta} server={api_server} handleDeleteClick={handleDeleteClick} />
+                    <AppCard url={`${il_server}${il_endpoint}`} key={ricetta.title} ricetta={ricetta} server={il_server} handleDeleteClick={handleDeleteClick} />
                 )) :
                     <p>Nessuna ricetta trovata</p>}
 
