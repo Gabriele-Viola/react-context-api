@@ -16,7 +16,7 @@ const url = api_server + api_endpoint
 // }
 
 export default function Ricette() {
-    const { Allricette, api_server } = useContext(GlobalContexts)
+    const { Allricette } = useContext(GlobalContexts)
     console.log(Allricette);
 
     const [ricette, setRicette] = useState([])

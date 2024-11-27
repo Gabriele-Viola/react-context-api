@@ -21,16 +21,19 @@ function App() {
       .then(resp => resp.json())
       .then(data => {
         setAllRicette(data.data)
+        console.log(data.data);
         console.log(allRicette);
 
       })
   }, [])
 
+
+
   return (
     <>
 
 
-      <GlobalContexts.Provider value={{ allRicette, api_server }} >
+      <GlobalContexts.Provider value={{ allRicette }} >
 
         <BrowserRouter>
           <Routes>
