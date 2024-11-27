@@ -22,15 +22,16 @@ export default function FocusRicetta() {
                     console.log(data, slug);
 
                     setRicetta(data.data.find(ricetta => ricetta.slug === slug))
-                    setIndex(data.data.findIndex(ricetta => ricetta.slug === slug))
-                    console.log(data.data.findIndex(ricetta => ricetta.slug === slug));
+                    const indexToSet = data.data.findIndex(ricetta => ricetta.slug === slug)
+                    setIndex(indexToSet)
+                    console.log(indexToSet);
                     console.log(index);
 
-                    setNext(data.data[data.data.findIndex(ricetta => ricetta.slug === slug) + 1]?.slug || null)
-                    console.log(next);
+                    setNext(data.data[indexToSet + 1]?.slug || null)
+                    //console.log(next);
 
-                    setPrev(data.data[data.data.findIndex(ricetta => ricetta.slug === slug) - 1]?.slug || null)
-                    console.log(data.data[data.data.findIndex(ricetta => ricetta.slug === currentSlug) + 1]?.slug || null);
+                    setPrev(data.data[indexToSet - 1]?.slug || null)
+                    //console.log(data.data[data.data.findIndex(ricetta => ricetta.slug === currentSlug) + 1]?.slug || null);
 
                 })
                 .catch(err => {
@@ -39,8 +40,6 @@ export default function FocusRicetta() {
                 })
 
         }, [slug])
-
-    console.log(next);
 
 
     return (

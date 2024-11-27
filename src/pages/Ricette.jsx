@@ -1,28 +1,18 @@
 import { Link } from 'react-router'
-import AppCard from '../Components/AppCard'
+import AppCard from '../components/AppCard'
 // import AppForm from '../Components/AppForm'
 import { useState, useEffect, useContext } from 'react'
 import GlobalContexts from '../contexts/GlobalContexts';
-const api_server = 'http://localhost:3000'
+// const api_server = 'http://localhost:3000'
 const api_endpoint = '/ricette/'
 const url = api_server + api_endpoint
 
-// const initialFormData = {
-//     title: '',
-//     content: '',
-//     image: '',
-//     tags: [],
-//     checked: false
-// }
 
 export default function Ricette() {
-    const { Allricette } = useContext(GlobalContexts)
-    console.log(Allricette);
+    const { api_server } = useContext(GlobalContexts)
+    console.log();
 
     const [ricette, setRicette] = useState([])
-    // const [formData, setFormData] = useState(initialFormData)
-    const [allTags, setAllTags] = useState([])
-    // const [checktags, setTags] = useState(initialFormData.tags)
 
     function fetchData(url = `${api_server}${api_endpoint}`) {
         fetch(url)

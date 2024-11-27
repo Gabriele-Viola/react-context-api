@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react'
 import Ricette from './pages/Ricette'
 import Home from './pages/Home'
 import About from './pages/About'
-import DefaultLayout from './Components/DefaultLayout'
-import AddRicetta from './pages/AddRicetta'
-import FocusRicetta from './pages/focusRicette'
-import GlobalContexts from './contexts/GlobalContexts'
 
+import AddRicetta from './pages/AddRicetta'
+import FocusRicetta from './pages/FocusRicette'
+import GlobalContexts from './contexts/GlobalContexts'
+import DefaultLayout from './components/DefaultLayout'
+
+const api_server = 'http://localhost:3000'
 function App() {
-  const api_server = 'http://localhost:3000'
   const api_endpoint = '/ricette/'
   const urlRicette = api_server + api_endpoint
   const [allRicette, setAllRicette] = useState([])
@@ -20,20 +21,24 @@ function App() {
     fetch(urlRicette)
       .then(resp => resp.json())
       .then(data => {
+        // console.log(data);
+        // console.log(data.data);
         setAllRicette(data.data)
-        console.log(data.data);
-        console.log(allRicette);
-
       })
   }, [])
 
+
+  console.log(allRicette)
+  // allRicette.forEach((r) => {
+  //   console.log(r);
+  // })
 
 
   return (
     <>
 
 
-      <GlobalContexts.Provider value={{ allRicette }} >
+      <GlobalContexts.Provider value={{ api_server }} >
 
         <BrowserRouter>
           <Routes>
