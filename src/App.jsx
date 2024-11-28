@@ -24,14 +24,11 @@ function App() {
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
-
         setRicette(data.data)
       })
   }
 
   useEffect(fetchData, [])
-
-  console.log(api_server);
 
   // allRicette.forEach((r) => {
   //   console.log(r);

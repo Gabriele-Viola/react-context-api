@@ -7,7 +7,6 @@ import GlobalContexts from '../contexts/GlobalContexts';
 
 export default function Ricette() {
     const { api_server, api_endpoint, fetchData, ricette, setRicette, urlRicette } = useContext(GlobalContexts)
-    console.log(api_server, api_endpoint);
 
     function handleDeleteClick(e) {
         e.preventDefault()
